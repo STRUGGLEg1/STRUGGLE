@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>STRUGGLE — Telegram</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Rubik', sans-serif;
+      color: #fff;
+      background: linear-gradient(-45deg, #0d0d0d, #121212, #1a1a1a, #0e0e0e);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      text-align: center;
+      padding: 120px 20px 100px;
+    }
+
+    .avatar {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid #229ED9;
+      box-shadow: 0 0 40px rgba(34, 158, 217, 0.4);
+      margin-bottom: 36px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 40px;
+      animation: fadeIn 1.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .btn {
+      padding: 20px 34px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 16px;
+      background: #ffffff;
+      color: #000;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
+      animation: pulse 3s infinite ease-in-out;
+      transition: transform 0.3s ease;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+      100% { transform: scale(1); }
+    }
+
+    .wave-divider {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      transform: rotate(180deg);
+    }
+
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+      height: 160px;
+    }
+
+    .section-info {
+      background-color: #121212;
+      padding: 100px 20px;
+      text-align: center;
+      animation: fadeIn 1.8s ease-in-out;
+    }
+
+    .section-info h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #229ED9;
+      margin-bottom: 28px;
+    }
+
+    .section-info p {
+      font-size: 1.2rem;
+      color: #ccc;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.9;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      .avatar {
+        width: 240px;
+        height: 240px;
+      }
+
+      .btn {
+        font-size: 1.1rem;
+        padding: 18px 28px;
+      }
+
+      .section-info h2 {
+        font-size: 1.8rem;
+      }
+
+      .section-info p {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="container">
+    <img src="https://sdmntpreastus2.oaiusercontent.com/files/00000000-b940-51f6-ab24-9d184ff3c33f/raw?se=2025-04-07T15%3A45%3A12Z&sp=r&sv=2024-08-04&sr=b&scid=08faeaa4-72a2-55de-8377-6de4f6e33270&skoid=3f3a9132-9530-48ef-96b7-fee5a811733f&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-07T06%3A06%3A55Z&ske=2025-04-08T06%3A06%3A55Z&sks=b&skv=2024-08-04&sig=2eYJ6bmjNpc5fRfePldXi/avO1OrsovNAvZVoq/du10%3D" alt="Struggle" class="avatar">
+    <h1>STRUGGLE</h1>
+
+    <div class="buttons">
+      <a href="https://t.me/struggle" class="btn" target="_blank">Підписатись</a>
+      <a href="https://t.me/struggle_bot" class="btn" target="_blank">Подати заявку</a>
+      <a href="#info" class="btn">Дізнатись більше</a>
+    </div>
+  </section>
+
+  <div class="wave-divider">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#121212" fill-opacity="1" d="M0,224L60,218.7C120,213,240,203,360,197.3C480,192,600,192,720,208C840,224,960,256,1080,250.7C1200,245,1320,203,1380,181.3L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
+  </div>
+
+  <section id="info" class="section-info">
+    <h2>Що таке struggle?</h2>
+    <p>
+      Struggle — це більше, ніж канал. Це стиль життя. Ми об'єднуємо тих, хто не боїться ризику, хто шукає інший шлях, хто не погоджується на «як у всіх». Тут — сила волі, арбітраж, гроші, розвиток і дух боротьби. Якщо ти готовий — приєднуйся.
+    </p>
+  </section>
+
+</body>
+</html>
+
