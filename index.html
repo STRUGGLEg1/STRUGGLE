@@ -9,23 +9,37 @@
       margin: 0;
       padding: 0;
       font-family: "Segoe UI", sans-serif;
-      background-color: #0e0e0e;
+      background: linear-gradient(-45deg, #0e0e0e, #1a1a1a, #2c2c2c, #0e0e0e);
+      background-size: 400% 400%;
+      animation: gradientFlow 12s ease infinite;
       color: white;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .section {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      height: 100vh;
-      overflow: hidden;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      text-align: center;
     }
 
     .container {
-      background-color: #1c1c1c;
+      background-color: rgba(28, 28, 28, 0.95);
       border-radius: 16px;
       padding: 2rem;
       width: 90%;
       max-width: 420px;
       box-shadow: 0 0 20px rgba(0,0,0,0.5);
-      text-align: center;
       opacity: 0;
       transform: scale(0.95);
       animation: fadeIn 0.8s ease-out forwards;
@@ -49,32 +63,24 @@
     }
 
     @keyframes popIn {
-      from {
-        transform: scale(0.8);
-        opacity: 0;
-      }
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     h1 {
       font-size: 1.6rem;
       margin-bottom: 0.5rem;
-      animation: fadeIn 1s ease-out 0.3s forwards;
     }
 
     p.description {
       font-size: 1rem;
       color: #ccc;
       margin-bottom: 2rem;
-      animation: fadeIn 1s ease-out 0.5s forwards;
     }
 
     .button {
       display: block;
-      margin: 0.5rem auto;
+      margin: 0 auto 1rem;
       padding: 0.8rem 1.5rem;
       background-color: #3daee9;
       color: white;
@@ -83,40 +89,167 @@
       border-radius: 12px;
       transition: transform 0.3s ease, background-color 0.3s ease;
       max-width: 300px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: buttonIn 0.6s ease-out forwards;
-    }
-
-    .button:nth-of-type(1) {
-      animation-delay: 0.7s;
-    }
-
-    .button:nth-of-type(2) {
-      animation-delay: 0.9s;
-    }
-
-    @keyframes buttonIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     .button:hover {
       background-color: #66c8ff;
       transform: translateY(-2px);
     }
+
+    .more-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      cursor: pointer;
+      color: #3daee9;
+      font-weight: 600;
+      border: 2px solid #3daee9;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      transition: all 0.3s ease;
+    }
+
+    .more-button:hover {
+      background: #3daee9;
+      color: #000;
+    }
+
+    .more-button svg {
+      animation: arrowBounce 2s infinite;
+    }
+
+    @keyframes arrowBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(4px); }
+    }
+
+    .info-section {
+      background-color: #121212;
+      padding: 3rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .info-card {
+      background-color: #1f1f1f;
+      border-left: 4px solid #3daee9;
+      padding: 1rem 1.2rem;
+      border-radius: 12px;
+      max-width: 550px;
+      width: 100%;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: cardIn 0.5s ease-out forwards;
+    }
+
+    .info-card:nth-child(n) { animation-delay: calc(0.15s * var(--i)); }
+
+    @keyframes cardIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .chat-bubble {
+      background-color: #232323;
+      padding: 0.8rem 1.2rem;
+      border-radius: 16px;
+      margin: 0.4rem 0;
+      position: relative;
+      color: #ddd;
+      font-size: 0.95rem;
+      animation: fadeInUp 0.6s ease-out forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .chat-bubble.bot {
+      background-color: #3daee9;
+      color: #000;
+      align-self: flex-end;
+    }
+
+    .chat-bubble::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 16px;
+      width: 0;
+      height: 0;
+      border: 10px solid transparent;
+      border-top-color: #232323;
+      border-bottom: 0;
+      border-left: 0;
+      margin-left: -5px;
+      margin-bottom: -10px;
+    }
+
+    .chat-bubble.bot::before {
+      left: auto;
+      right: 16px;
+      border-top-color: #3daee9;
+      border-left: 10px solid transparent;
+      border-right: 0;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #777;
+      margin: 2rem 0 1rem;
+    }
+
+    a {
+      color: inherit;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Avatar" class="avatar" />
-    <h1>STRUGGLE</h1>
-    <p class="description">Залишайся на зв’язку, ми покажемо тобі, як робити гроші на арбітражі. Тільки практика. Ніякої води.</p>
-    
-    <a class="button" href="https://t.me/struggle_channel" target="_blank">Перейти в Telegram</a>
-    <a class="button" href="https://t.me/struggle_chat" target="_blank">Зайти в чат</a>
-  </div>
+
+  <section class="section">
+    <div class="container">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Avatar" class="avatar" />
+      <h1>STRUGGLE</h1>
+      <p class="description">Залишайся на зв’язку, ми покажемо тобі, як робити гроші на арбітражі. Тільки практика. Ніякої води.</p>
+      <a class="button" href="https://t.me/struggle_channel" target="_blank">Перейти в Telegram</a>
+
+      <div class="more-button" onclick="document.getElementById('info').scrollIntoView({ behavior: 'smooth' })">
+        Детальніше
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 12a.5.5 0 0 1-.374-.832l3.5-4a.5.5 0 0 1 .748.664L8.748 11H8zm0 0a.5.5 0 0 1 .374-.832l-3.5-4a.5.5 0 1 1 .748-.664L7.252 11H8z"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="info-section" id="info">
+    <div class="info-card" style="--i:1">💡 <strong>Ми навчаємо через практику</strong> — жодних теорій, тільки реальні кейси і зв’язки.</div>
+    <div class="info-card" style="--i:2">🚀 <strong>Актуальні зв’язки</strong> — ми тестимо оффери щодня і викладаємо найсоковитіші.</div>
+    <div class="info-card" style="--i:3">📊 <strong>Статистика без прикрас</strong> — скільки влили, скільки заробили. Прямо.</div>
+    <div class="info-card" style="--i:4">🧠 <strong>Щоденні інсайти</strong> — нові зв’язки, банери, фішки, які працюють тут і зараз.</div>
+
+    <div style="margin-top: 3rem; width: 100%; max-width: 550px;">
+      <div class="chat-bubble">👋 Привіт, ти у STRUGGLE. Тут немає води. Тут є гроші.</div>
+      <div class="chat-bubble bot">🔥 У нас немає курсів. Є кейси, які приносять $$$ вже зараз.</div>
+      <div class="chat-bubble">🧠 Вчора злили 2300$ — повернулося 4.7k. Пояснюємо як.</div>
+      <div class="chat-bubble bot">🛠️ Маєш інструменти — ми покажемо як їх використовувати на максимум.</div>
+      <div class="chat-bubble">🤝 У STRUGGLE спільнота — це не чат. Це твоя армія.</div>
+    </div>
+  </section>
+
+  <div class="footer">Struggle 2025</div>
+
 </body>
 </html>
