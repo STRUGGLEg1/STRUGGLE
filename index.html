@@ -1,139 +1,123 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>STRUGGLE Telegram</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STRUGGLE — Перехідник</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(145deg, #00060f, #0b1f33);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      color: #ffffff;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .container {
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(0, 136, 204, 0.3);
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(120deg, #0f0c29, #302b63, #24243e);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: white;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .card {
+      backdrop-filter: blur(14px);
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2rem;
       border-radius: 20px;
-      padding: 50px 40px;
-      backdrop-filter: blur(15px);
-      box-shadow: 0 0 30px rgba(0, 136, 204, 0.4);
       text-align: center;
-      position: relative;
-      animation: fadeIn 1s ease forwards;
-      opacity: 0;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 1s ease;
       max-width: 400px;
+      width: 90%;
     }
 
     @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
+      from {opacity: 0; transform: scale(0.95);}
+      to {opacity: 1; transform: scale(1);}
     }
 
-    .glow {
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at center, rgba(0, 136, 204, 0.15), transparent);
-      animation: rotate 10s linear infinite;
-      z-index: 0;
-      top: -50%;
-      left: -50%;
-    }
-
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .container * {
-      position: relative;
-      z-index: 1;
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid #3daee9;
+      object-fit: cover;
+      margin-bottom: 1rem;
     }
 
     h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2rem;
-      margin-bottom: 10px;
-      letter-spacing: 2px;
-      color: #00aaff;
-      animation: slideDown 1s ease forwards;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
     }
 
-    p {
-      color: #b8cce5;
-      font-size: 1rem;
-      margin-bottom: 30px;
-      animation: fadeIn 1.5s ease forwards;
-      opacity: 0;
-      animation-delay: 0.5s;
-    }
-
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .tagline {
+      font-size: 0.95rem;
+      color: #ccc;
+      margin-bottom: 1.5rem;
     }
 
     .button {
-      display: inline-block;
-      padding: 14px 30px;
-      border-radius: 50px;
-      background: linear-gradient(90deg, #0088cc, #00aaff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #3daee9;
       color: white;
+      padding: 0.8rem 1.2rem;
+      border-radius: 12px;
+      margin: 0.5rem auto;
+      width: 100%;
+      max-width: 280px;
       text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-      box-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: fadeIn 1.5s ease forwards;
-      animation-delay: 1s;
-      opacity: 0;
+      font-weight: 600;
+      transition: all 0.3s ease;
     }
 
     .button:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 30px rgba(0, 170, 255, 0.6);
+      background: #66c8ff;
+      transform: scale(1.03);
     }
 
-    .telegram-icon {
-      margin-bottom: 25px;
-      animation: float 3s ease-in-out infinite;
+    .button svg {
+      margin-right: 0.5rem;
     }
 
-    .telegram-icon img {
-      width: 70px;
-      filter: drop-shadow(0 0 10px rgba(0, 170, 255, 0.5));
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    footer {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: #777;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="glow"></div>
-    <div class="telegram-icon">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo">
-    </div>
-    <h1>STRUGGLE</h1>
-    <p>Прокачай розум і волю. Ми не мотивуємо — ми заряджаємо.</p>
-    <a href="https://t.me/struggle" class="button" target="_blank">Увійти в Telegram</a>
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="STRUGGLE" class="avatar" />
+    <h1>STRUGGLE — Твій Шлях До $$$</h1>
+    <p class="tagline">Переходь у канал і лови практичні інсайти по арбітражу трафіку. Мінімум слів — максимум діла.</p>
+
+    <a class="button" href="https://t.me/struggle_channel" target="_blank">
+      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M9.993 16.2l-.395 4.555c.568 0 .812-.243 1.11-.535l2.664-2.499 5.522 4.033c1.012.558 1.73.264 1.993-.938l3.619-16.985c.34-1.56-.576-2.174-1.564-1.797L.87 10.315c-1.525.593-1.504 1.434-.261 1.819l5.712 1.785L19.12 5.928c.594-.401 1.136-.179.69.223"/></svg>
+      Перейти в канал
+    </a>
+
+    <a class="button" href="https://t.me/struggle_chat" target="_blank">
+      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 4.89 0 10.927c0 3.437 1.992 6.496 5.184 8.474v4.006l4.754-2.562c.667.094 1.353.14 2.062.14 6.627 0 12-4.89 12-10.927S18.627 0 12 0z"/></svg>
+      Зайти в чат
+    </a>
+
+    <footer>© STRUGGLE 2025</footer>
   </div>
 </body>
 </html>
