@@ -11,7 +11,7 @@
       font-family: "Segoe UI", sans-serif;
       background: linear-gradient(-45deg, #0e0e0e, #1a1a1a, #2c2c2c, #0e0e0e);
       background-size: 400% 400%;
-      animation: gradientFlow 12s ease infinite;
+      animation: gradientFlow 15s ease infinite;
       color: white;
       overflow-x: hidden;
       scroll-behavior: smooth;
@@ -19,7 +19,9 @@
 
     @keyframes gradientFlow {
       0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+      25% { background-position: 100% 50%; }
+      50% { background-position: 100% 0%; }
+      75% { background-position: 0% 0%; }
       100% { background-position: 0% 50%; }
     }
 
@@ -214,6 +216,7 @@
     a {
       color: inherit;
     }
+
   </style>
 </head>
 <body>
@@ -235,10 +238,18 @@
   </section>
 
   <section class="info-section" id="info">
-    <div class="info-card" style="--i:1">💡 <strong>Ми навчаємо через практику</strong> — жодних теорій, тільки реальні кейси і зв’язки.</div>
-    <div class="info-card" style="--i:2">🚀 <strong>Актуальні зв’язки</strong> — ми тестимо оффери щодня і викладаємо найсоковитіші.</div>
-    <div class="info-card" style="--i:3">📊 <strong>Статистика без прикрас</strong> — скільки влили, скільки заробили. Прямо.</div>
-    <div class="info-card" style="--i:4">🧠 <strong>Щоденні інсайти</strong> — нові зв’язки, банери, фішки, які працюють тут і зараз.</div>
+    <div class="info-card" style="--i:1">
+      💡 <strong>Ми навчаємо через практику</strong> — жодних теорій, тільки реальні кейси і зв’язки.
+    </div>
+    <div class="info-card" style="--i:2">
+      🚀 <strong>Актуальні зв’язки</strong> — ми тестимо оффери щодня і викладаємо найсоковитіші.
+    </div>
+    <div class="info-card" style="--i:3">
+      📊 <strong>Статистика без прикрас</strong> — скільки влили, скільки заробили. Прямо.
+    </div>
+    <div class="info-card" style="--i:4">
+      🧠 <strong>Щоденні інсайти</strong> — нові зв’язки, банери, фішки, які працюють тут і зараз.
+    </div>
 
     <div style="margin-top: 3rem; width: 100%; max-width: 550px;">
       <div class="chat-bubble">👋 Привіт, ти у STRUGGLE. Тут немає води. Тут є гроші.</div>
