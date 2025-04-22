@@ -3,269 +3,142 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Перехід до Telegram</title>
+  <title>STRUGGLE | Telegram Access</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: linear-gradient(-45deg, #0e0e0e, #1a1a1a, #2c2c2c, #0e0e0e);
-      background-size: 400% 400%;
-      animation: gradientFlow 15s ease infinite;
-      color: white;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
-
-    @keyframes gradientFlow {
-      0% { background-position: 0% 50%; }
-      25% { background-position: 100% 50%; }
-      50% { background-position: 100% 0%; }
-      75% { background-position: 0% 0%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .section {
+      background-color: #0a0a0a;
+      color: #e5e5e5;
+      font-family: 'Segoe UI', sans-serif;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 40px 20px;
+      overflow-x: hidden;
+    }
+    h1 {
+      color: #00bfff;
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-align: center;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    .step {
+      background: #111;
+      border: 1px solid #222;
+      border-left: 4px solid #00bfff;
+      padding: 15px;
+      margin: 10px 0;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    .step:nth-child(2) { animation-delay: 0.2s; }
+    .step:nth-child(3) { animation-delay: 0.4s; }
+    .step:nth-child(4) { animation-delay: 0.6s; }
+
+    .step strong {
+      color: #00bfff;
+    }
+
+    .tg-button {
+      display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    .container {
-      background-color: rgba(28, 28, 28, 0.95);
-      border-radius: 16px;
-      padding: 2rem;
-      width: 90%;
-      max-width: 420px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-      opacity: 0;
-      transform: scale(0.95);
-      animation: fadeIn 0.8s ease-out forwards;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .avatar {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1rem;
-      border: 1px solid #3daee9;
-      animation: popIn 0.6s ease-out forwards;
-    }
-
-    @keyframes popIn {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    h1 {
-      font-size: 1.6rem;
-      margin-bottom: 0.5rem;
-    }
-
-    p.description {
-      font-size: 1rem;
-      color: #ccc;
-      margin-bottom: 2rem;
-    }
-
-    .button {
-      display: block;
-      margin: 0 auto 1rem;
-      padding: 0.8rem 1.5rem;
-      background-color: #3daee9;
+      gap: 10px;
+      background-color: #229ED9;
       color: white;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 12px;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      max-width: 300px;
-    }
-
-    .button:hover {
-      background-color: #66c8ff;
-      transform: translateY(-2px);
-    }
-
-    .more-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 1rem;
+      font-weight: bold;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
       cursor: pointer;
-      color: #3daee9;
-      font-weight: 600;
-      border: 2px solid #3daee9;
-      padding: 0.5rem 1rem;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.03);
-      transition: all 0.3s ease;
-    }
-
-    .more-button:hover {
-      background: #3daee9;
-      color: #000;
-    }
-
-    .more-button svg {
-      animation: arrowBounce 2s infinite;
-    }
-
-    @keyframes arrowBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(4px); }
-    }
-
-    .info-section {
-      background-color: #121212;
-      padding: 3rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .info-card {
-      background-color: #1f1f1f;
-      border-left: 4px solid #3daee9;
-      padding: 1rem 1.2rem;
-      border-radius: 12px;
-      max-width: 550px;
-      width: 100%;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: cardIn 0.5s ease-out forwards;
-    }
-
-    .info-card:nth-child(n) { animation-delay: calc(0.15s * var(--i)); }
-
-    @keyframes cardIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .chat-bubble {
-      background-color: #232323;
-      padding: 0.8rem 1.2rem;
-      border-radius: 16px;
-      margin: 0.4rem 0;
-      position: relative;
-      color: #ddd;
-      font-size: 0.95rem;
-      animation: fadeInUp 0.6s ease-out forwards;
+      margin-top: 30px;
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(34, 158, 217, 0.3);
+      transition: transform 0.2s ease;
+      animation: fadeInUp 0.8s ease forwards;
+      animation-delay: 1s;
       opacity: 0;
       transform: translateY(20px);
     }
 
-    .chat-bubble.bot {
-      background-color: #3daee9;
-      color: #000;
-      align-self: flex-end;
+    .tg-button:hover {
+      transform: scale(1.05);
     }
 
-    .chat-bubble::before {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 16px;
-      width: 0;
-      height: 0;
-      border: 10px solid transparent;
-      border-top-color: #232323;
-      border-bottom: 0;
-      border-left: 0;
-      margin-left: -5px;
-      margin-bottom: -10px;
-    }
-
-    .chat-bubble.bot::before {
-      left: auto;
-      right: 16px;
-      border-top-color: #3daee9;
-      border-left: 10px solid transparent;
-      border-right: 0;
-    }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .tg-icon {
+      width: 24px;
+      height: 24px;
     }
 
     .footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #555;
       text-align: center;
-      font-size: 0.85rem;
-      color: #777;
-      margin: 2rem 0 1rem;
+      animation: fadeIn 1.5s ease;
     }
 
-    a {
-      color: inherit;
+    .struggle-sign {
+      margin-top: 60px;
+      font-size: 12px;
+      color: #333;
+      text-align: center;
+      letter-spacing: 1px;
+      animation: fadeIn 2s ease;
     }
 
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 <body>
+  <h1>🚨 TikTok блокує лінк!</h1>
+  
+  <div class="step"><strong>Крок 1:</strong> Натисни <em>три крапки</em> у правому верхньому куті</div>
+  <div class="step"><strong>Крок 2:</strong> Обери “Відкрити в браузері”</div>
+  <div class="step"><strong>Крок 3:</strong> Натисни кнопку нижче</div>
+  
+  <a href="https://t.me/your_channel_link" target="_blank" class="tg-button">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" class="tg-icon">
+    Telegram
+  </a>
 
-  <section class="section">
-    <div class="container">
-      <img src="images/logo.jpg" alt="Avatar" class="avatar" />
-      <h1>STRUGGLE</h1>
-      <p class="description">Проєкт, який не просто росте, він перевертає гру. Ми не адаптуємось до ринку — ми його формуємо.</p>
-      <a class="button" href="https://t.me/+4iSgRErmMZBhNDVi" target="_blank">
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 16 16" style="vertical-align: middle; margin-right: 8px;">
-    <path d="M16 1.538L13.676 14.167c-.184.922-.751 1.146-1.52.716l-4.2-3.094-2.025 1.95c-.223.223-.41.41-.84.41l.3-4.274L13.26 3.847c.287-.246-.063-.383-.444-.137L4.264 9.844.49 8.675c-.9-.281-.918-.9.188-1.33L14.812.205C15.586-.11 16.236.329 16 1.538z"/>
-  </svg>
-  Telegram
-</a>
+  <div class="footer">
+    Якщо не працює — скопіюй лінк і встав у браузер вручну.
+  </div>
 
-      <div class="more-button" onclick="document.getElementById('info').scrollIntoView({ behavior: 'smooth' })">
-        Детальніше
-        <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M8 10.5a.5.5 0 0 1-.374-.166l-3.5-4a.5.5 0 1 1 .748-.664L8 9.293l3.126-3.623a.5.5 0 1 1 .748.664l-3.5 4A.5.5 0 0 1 8 10.5z"/>
-</svg>
-      </div>
-    </div>
-  </section>
-
-  <section class="info-section" id="info">
-    <div class="info-card" style="--i:1">
-      💡 <strong>Ми навчаємо через практику</strong> — жодних теорій, тільки реальні кейси і зв’язки.
-    </div>
-    <div class="info-card" style="--i:2">
-      🚀 <strong>Актуальні зв’язки</strong> — ми тестимо оффери щодня і викладаємо найсоковитіші.
-    </div>
-    <div class="info-card" style="--i:3">
-      📊 <strong>Статистика без прикрас</strong> — скільки влили, скільки заробили. Прямо.
-    </div>
-    <div class="info-card" style="--i:4">
-      🧠 <strong>Щоденні інсайти</strong> — нові зв’язки, банери, фішки, які працюють тут і зараз.
-    </div>
-
-    <div style="margin-top: 3rem; width: 100%; max-width: 550px;">
-      <div class="chat-bubble">👋 Привіт, ти у STRUGGLE. Тут немає води. Тут є гроші.</div>
-      <div class="chat-bubble bot">🔥 У нас немає курсів. Є кейси, які приносять $$$ вже зараз.</div>
-      <div class="chat-bubble">🧠 Вчора злили 2300$ — повернулося 4.7k. Пояснюємо як.</div>
-      <div class="chat-bubble bot">🛠️ Маєш інструменти — ми покажемо як їх використовувати на максимум.</div>
-      <div class="chat-bubble">🤝 У STRUGGLE спільнота — це не чат. Це твоя армія.</div>
-    </div>
-  </section>
-
-  <div class="footer">Struggle 2025</div>
+  <div class="struggle-sign">
+    — сайт від STRUGGLE —
+  </div>
+</body>
+</html>
 
 </body>
 </html>
