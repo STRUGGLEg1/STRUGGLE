@@ -8,7 +8,6 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #0a0a0a;
       color: #e5e5e5;
       font-family: 'Segoe UI', sans-serif;
       display: flex;
@@ -18,7 +17,10 @@
       min-height: 100vh;
       padding: 40px 20px;
       overflow-x: hidden;
+      background: #111;
+      animation: backgroundAnimation 6s ease infinite;
     }
+
     h1 {
       color: #00bfff;
       font-size: 28px;
@@ -26,6 +28,7 @@
       text-align: center;
       animation: fadeInUp 0.8s ease forwards;
     }
+
     .step {
       background: #111;
       border: 1px solid #222;
@@ -40,6 +43,7 @@
       transform: translateY(20px);
       animation: fadeInUp 0.8s ease forwards;
     }
+
     .step:nth-child(2) { animation-delay: 0.2s; }
     .step:nth-child(3) { animation-delay: 0.4s; }
     .step:nth-child(4) { animation-delay: 0.6s; }
@@ -64,7 +68,7 @@
       margin-top: 30px;
       text-decoration: none;
       box-shadow: 0 0 20px rgba(34, 158, 217, 0.3);
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, background-color 0.3s ease;
       animation: fadeInUp 0.8s ease forwards;
       animation-delay: 1s;
       opacity: 0;
@@ -73,6 +77,7 @@
 
     .tg-button:hover {
       transform: scale(1.05);
+      background-color: #1a87c7;
     }
 
     .tg-icon {
@@ -116,6 +121,18 @@
         opacity: 1;
       }
     }
+
+    @keyframes backgroundAnimation {
+      0% {
+        background: #111;
+      }
+      50% {
+        background: #333;
+      }
+      100% {
+        background: #111;
+      }
+    }
   </style>
 </head>
 <body>
@@ -125,7 +142,7 @@
   <div class="step"><strong>Крок 2:</strong> Обери “Відкрити в браузері”</div>
   <div class="step"><strong>Крок 3:</strong> Натисни кнопку нижче</div>
   
-  <a href="https://t.me/your_channel_link" target="_blank" class="tg-button">
+  <a href="https://t.me/+4iSgRErmMZBhNDVi" target="_blank" class="tg-button">
     <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" class="tg-icon">
     Telegram
   </a>
@@ -137,8 +154,5 @@
   <div class="struggle-sign">
     — сайт від STRUGGLE —
   </div>
-</body>
-</html>
-
 </body>
 </html>
